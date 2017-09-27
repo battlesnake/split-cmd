@@ -2,7 +2,7 @@
 set -e
 cd "$(dirname "$0")"
 gcc -O3 -Wall -Wextra -Wno-parentheses -Werror -ffunction-sections -fdata-sections -flto -Wl,--gc-sections -o test *.c
-exec ./test
+exec valgrind -q --leak-check=full --track-origins=yes ./test
 exit 1
 #endif
 #include <stdio.h>
@@ -28,6 +28,7 @@ const char *test_strings[] = {
 	"cmd 'single quote' \"double quote\"",
 	"cmd 'single\"quote' \"double'quote\"",
 	" \t cmd \t arg \t 'single\"quote' \t \"double'quote\" \t ",
+	"0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z",
 	0
 };
 
