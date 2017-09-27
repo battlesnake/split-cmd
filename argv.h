@@ -44,7 +44,7 @@ static const struct arg_vector ARG_VECTOR_INIT = {
 	.superbuf_idx = 0,
 };
 
-/* Parse an argument vector in one-step, with only one dynamic allocation */
+/* Parse an argument vector with only one dynamic allocation, with two passes */
 int parse_arg_vector(const char *cmd, struct arg_vector *av);
 
 /* Iterator for use with split_cmd */
